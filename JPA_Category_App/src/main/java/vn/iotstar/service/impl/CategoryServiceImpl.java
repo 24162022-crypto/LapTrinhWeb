@@ -1,0 +1,35 @@
+package vn.iotstar.service.impl;
+
+import java.util.List;
+import vn.iotstar.dao.ICategoryDao;
+import vn.iotstar.dao.impl.CategoryDaoImpl;
+import vn.iotstar.entity.Category;
+import vn.iotstar.service.ICategoryService;
+
+public class CategoryServiceImpl implements ICategoryService {
+    private final ICategoryDao categoryDao = new CategoryDaoImpl();
+
+    @Override
+    public List<Category> findAll() {
+        return categoryDao.findAll();
+    }
+
+    @Override
+    public Category findById(int id) {
+        return categoryDao.findById(id);
+    }
+
+    @Override
+    public void insert(Category category) {
+        categoryDao.insert(category);
+    }
+
+    @Override
+    public void delete(int id) {
+        try {
+            categoryDao.delete(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
